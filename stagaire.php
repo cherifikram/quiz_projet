@@ -10,30 +10,29 @@
     <h1>Quiz</h1>
     
 
-    <div class="container">
-    <div>
+<div class="container">
+    <div class="image">
         <img src="HTML5_logo_and_wordmark.svg.png" alt="">
         <p>html</p>
     </div>
-    <div>
+    <div class="image">
         <img src="CSS3_logo_and_wordmark.svg.png" alt="">
         <p>css</p>
     </div>
-    <div>
+    <div class="image">
         <img src="image.webp" alt="">
         <p>javascript</p>
     </div>
-    </div>
-    <div>
+    <div class="image">
         <img src="php.png" alt="">
         <p>react</p>
     </div>
-    <div>
+    <div class="image">
         <img src="python.png" alt="">
         <p>Python</p>
     </div>
 
-    </div>
+</div>
 
 </body>
 </html>
