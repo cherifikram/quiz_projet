@@ -10,8 +10,8 @@
 <form action="#" method="POST">
             <fieldset>
                 <legend><b>Login</b></legend>
-                <label for="username">Username :</label>
-                <input type="text" id="username" placeholder="enter username"  name="Username"><br><br>
+                <label for="email">G_mail :</label>
+                <input type="text" id="email" placeholder="enter email"  name="email"><br><br>
 
                 <label for="password">Password :</label>
                 <input type="text" id="password" placeholder="       password " name="password"> <br><br>
@@ -23,19 +23,30 @@
         <?php
         require "conexion.php";
         if(isset($_POST['connecter'])){
-            $Username = $_POST['Username'];
+            $email = $_POST['email'];
             $password = $_POST['password'];
 
-            if(!empty($Username) && !empty($password)){
-                $req = ("SELECT firstName,mot_passe FROM inscription WHERE firstName='$Username' AND mot_passe='$password'");
+            if(!empty($email) && !empty($password)){
+                // $req = ("SELECT email,mot_passe FROM utilisateurs WHERE email='$email' AND mot_passe='$password' And typee=");
+                $req = ("SELECT typee FROM utilisateurs WHERE email='$email' AND mot_passe='$password'");
                 $result = mysqli_query($cnx, $req);
-                
-            if(mysqli_fetch_assoc($result)){
-              header("location:contact.php");
-            }else{
-              echo"<p style='color:red'>erreur!!</p>";
+                $res=mysqli_fetch_assoc($result);
+
+                if($res){
+                  if($res['typee']=='stagaire'){
+                    header("location: stagaire.php");
+                    exit();
+                  }elseif($res['typee']=='administrateur'){
+                    header("location: administrateur.php");
+                    exit();
+
+                  }else{
+                    echo"type dutilisateue non reconnu";
+                  }
+                }else{
+                  echo"email ou mot de passe incorect";
+                }
               
-            }
             mysqli_close($cnx);
 
                 // if($result){
@@ -44,9 +55,9 @@
                 // else{
                 //     echo "<p style='color:red'>vous navez pas du compte</p>";
                 // }
-        
+            }
          }
-        }
+        
     
 
         ?>
