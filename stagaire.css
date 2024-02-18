@@ -1,14 +1,11 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  background-color: #111;
 }
 
 html {
   box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
 }
 
 .column {
@@ -23,13 +20,13 @@ html {
   margin: 8px;
 }
 
-.about-section {
+.div1{
   padding: 50px;
-  background-color:blueviolet;
+  background-color:rgb(143, 68, 213);
   color: white;
   height: 210px;
 }
-.about-section h1{
+.div1 .h1{
   font-size: xx-large;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -50,13 +47,7 @@ html {
   justify-content: center;
 }
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
+.container .title {
   color: grey;
 }
 
@@ -94,28 +85,4 @@ html {
 }
 
 
-.logout{
-  display: flex;
-  float: right;
-  text-decoration: none;
-  color: white;
-  transition: all 0.3s ease;
-  padding: 8px;
-  border-radius: 6px;
-  top: 15px;
-  margin: 15px;
-}
 
-.logout:hover{
-  color: black;
-  background-color: white;
-}
-h1{
-  text-align: center;
-}
-footer{
-    background: #111;
-    padding: 20px 23px;
-    color: white;
-    text-align: center;
-}
