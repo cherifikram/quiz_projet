@@ -5,6 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stagaire</title>
     <link rel="stylesheet" href="stagaire.css">
+    <style>
+      body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-image: none;
+
+}
+
+html {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.div1{
+  padding: 50px;
+  background-color:rgb(143, 68, 213);
+  color: white;
+  height: 100px;
+}
+.div1 .h1{
+  font-size: xx-large;
+  text-align: center;
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+
+
+.container {
+  padding: 0 16px;
+ 
+  
+}
+.container p{
+  text-align: center;
+}
+.container a{
+  display: flex;
+  justify-content: center;
+}
+
+.container .title {
+  color: grey;
+}
+
+.button {    display: inline-block;
+    background-color: rgb(49, 51, 190);
+    color: white;
+    font-size: 18px;
+    padding: 8px 16px;
+    width: 80px;
+    height: 40px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid black;
+    transition: all 0.3s ease;
+}
+
+
+.button:hover {
+  background-color:gray;
+  
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  padding-top: 15px;
+}  
+
+
+
+
+    </style>
 </head>
 <body>
 
