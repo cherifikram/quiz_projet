@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stagaire</title>
-    <link rel="stylesheet" href="stagaire.css">
+    <!-- <link rel="stylesheet" href="stagaire.css"> -->
     <style>
       body {
   font-family: Arial, Helvetica, sans-serif;
@@ -110,7 +110,7 @@ html {
      <img src="HTML5_logo_and_wordmark.svg.png" alt="" style="width:50%" height=":50%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="home.php"> <button class="button" > start</p></button></a>
+        <a href="test3.php"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
@@ -120,7 +120,7 @@ html {
      <img src="CSS3_logo_and_wordmark.svg.png" alt="" style="width:37%" height=":37%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="home.php"> <button class="button" > start</p></button></a>
+        <a href="test3.php"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
@@ -130,7 +130,7 @@ html {
      <img src="image.webp" alt="" style="width:46%" height=":46%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="home.php"> <button class="button" > start</p></button></a>
+        <a href="test3.php"> <button class="button" > start</p></button></a>
       </div>
       <br>
     </div>
@@ -141,7 +141,7 @@ html {
      <img src="phpp-logo.png" alt="" style="width:50%" height=":50%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="home.php"> <button class="button" > start</p></button></a>
+        <a href="test3.php"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
@@ -152,7 +152,7 @@ html {
      <img src="python.png" alt="" style="width:45%" height=":45%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="home.php"> <button class="button" > start</p></button></a>
+        <a href="test3.php"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
@@ -162,7 +162,7 @@ html {
      <img src="react.png" alt="" style="width:50%" height=":50%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="home.php"> <button class="button" > start</p></button></a>
+        <a href="test3.php"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
