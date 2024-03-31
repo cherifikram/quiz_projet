@@ -46,7 +46,7 @@
             justify-content: center;
             align-items: center;
         }
-        .Continue {
+        .Continue, .Voir-resultat {
             width: 110px;
             height: 30px;
             background: blue;
@@ -60,8 +60,9 @@
             cursor: pointer;
             box-shadow: 0 0 10px rgba(0, 0, 0, .1);
             transition: .5s;
+            margin-right: 10px;
         }
-        .Continue:hover {
+        .Continue:hover, .Voir-resultat:hover {
             background: #fff;
             color: #c40094;
         }
@@ -73,17 +74,33 @@
         require "conexion.php";
         
         $current_question = isset($_POST['current_question']) ? $_POST['current_question'] : 1;
-        $score = 0; // Initialisation du score
         
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['check'])) {
-            $user_answer = $_POST['check'];
-            $sql = "SELECT correction FROM options1 WHERE id_option = '$user_answer'";
-            $result = mysqli_query($cnx, $sql);
-            $row = mysqli_fetch_assoc($result);
-            $correct_answer = $row['correction'];
-            if ($user_answer == $correct_answer) {
-                $score++; // Incrémentation du score si la réponse est correcte
+        // Vérifier si des options ont été soumises
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['options'])) {
+
+            $selected_options = $_POST['options'];
+
+            // Initialiser le score et le nombre total de questions
+            $score = 0;
+            $total_questions = 0;
+
+            // Sélectionner les options correctes pour chaque question
+            $sql = "SELECT o.id_option, o.correction FROM options1 o JOIN questions1 q ON o.id_question = q.id_question ";
+            $result = $cnx->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Calculer le score
+                while ($row = $result->fetch_assoc()) {
+                    $total_questions++;
+                    if (in_array($row['id_option'], $selected_options) && $row['correction'] == 1) {
+                        $score++;
+                    }
+                }
             }
+
+            // Afficher le score
+            echo "<h2>Votre score pour ce quiz :</h2>";
+            echo "<p>Score : $score / $total_questions</p>";
         }
         ?>
         <div class="container">
@@ -105,7 +122,7 @@
                     while ($option_row = mysqli_fetch_assoc($dataa)) {
                     ?>
                     <div class="options">
-                        <input type="radio" name="check" value="<?php echo $option_row['id_option'];?>">
+                        <input type="checkbox" name="options[]" value="<?php echo $option_row['id_option'];?>">
                         <?php echo $option_row['text_option'];?><br>
                     </div>
                     <br>
@@ -114,17 +131,11 @@
                     ?>
                     <div class="btn-next">
                         <button type="submit" name="Continue" value="Continue" class="Continue">Continue</button>
+                        <a href="res.php" class="Voir-resultat">Voir Résultat</a>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-    
-    <script>
-    document.querySelector('button[name="Continue"]').addEventListener('click', function() {
-        var currentQuestionInput = document.querySelector('input[name="current_question"]');
-        currentQuestionInput.value = parseInt(currentQuestionInput.value) + 1;
-    });
-    </script>
 </body>
 </html>

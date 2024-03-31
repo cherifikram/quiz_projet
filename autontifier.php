@@ -14,7 +14,7 @@
                 <input type="text" id="email" placeholder="enter email"  name="email"><br><br>
 
                 <label for="password">Password :</label>
-                <input type="text" id="password" placeholder="       password " name="password"> <br><br>
+                <input type="password" id="password" placeholder="       password " name="password"> <br><br>
                 <button name="connecter"><b>connecter</b></button><br>
                 <small>Not having Acount yet? <a href="register.html"><b>register</b></a></small>
 
