@@ -110,7 +110,7 @@ html {
      <img src="HTML5_logo_and_wordmark.svg.png" alt="" style="width:50%" height=":50%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php"> <button class="button" > start</p></button></a>
+        <a href="quiz.php?id_quiz=1"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
@@ -120,7 +120,7 @@ html {
      <img src="CSS3_logo_and_wordmark.svg.png" alt="" style="width:37%" height=":37%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php"> <button class="button" > start</p></button></a>
+        <a href="quiz.php?id_quiz=2"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
@@ -167,7 +167,13 @@ html {
     </div>
   </div>
     
-
-
 </body>
 </html>
+
+
+
+
+
+
+
+
