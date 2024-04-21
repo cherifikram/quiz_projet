@@ -99,6 +99,44 @@ html {
     </style>
 </head>
 <body>
+<div class="div1">
+    <?php
+    // Connexion à la base de données
+    $server="localhost";
+    $user="root";
+    $password="";
+    $database="quiz_projet";
+
+    // Créer la connexion
+    $conn = new mysqli($server, $user, $password, $database);
+
+    // Vérifier la connexion
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Requête SQL pour récupérer le nom du stagiaire
+    $sql = "SELECT firstname FROM utilisateurs "; // Remplacez id_stagiaire par l'ID du stagiaire que vous souhaitez récupérer
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Afficher le nom du stagiaire dans l'en-tête de la page
+        while($row = $result->fetch_assoc()) {
+            echo "<h1>Bienvenue, " . $row["firstname"] . "</h1>";
+        }
+    } else {
+        echo "<h1>Bienvenue, Stagiaire</h1>"; // Message par défaut si aucun nom n'est trouvé
+    }
+
+    // Fermer la connexion à la base de données
+    $conn->close();
+    ?>
+</div>
+
+    
+</div>
+
 
   <div class="div1">
         <h1>Quiz</h1>

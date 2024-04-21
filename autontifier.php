@@ -28,7 +28,7 @@
 
             if(!empty($email) && !empty($password)){
                 // $req = ("SELECT email,mot_passe FROM utilisateurs WHERE email='$email' AND mot_passe='$password' And typee=");
-                $req = ("SELECT typee FROM utilisateurs1 WHERE email='$email' AND mot_passe='$password'");
+                $req = ("SELECT typee FROM utilisateurs WHERE email='$email' AND mot_passe='$password'");
                 $result = mysqli_query($cnx, $req);
                 $res=mysqli_fetch_assoc($result);
 

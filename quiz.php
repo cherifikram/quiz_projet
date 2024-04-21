@@ -79,7 +79,7 @@
     require "conexion.php";
 
     // Sélectionner les questions pour ce quiz
-    $sql = "SELECT id_question, titre_question FROM questions1";
+    $sql = "SELECT id_question, titre_question FROM questions";
     $result = $cnx->query($sql);
 
     if ($result->num_rows > 0) {
@@ -98,7 +98,7 @@
 
             // Sélectionner les options pour cette question
             $question_id = $row['id_question'];
-            $options_sql = "SELECT id_option, text_option FROM options1 WHERE id_question = $question_id";
+            $options_sql = "SELECT id_option, text_option FROM options WHERE id_question = $question_id";
             $options_result = $cnx->query($options_sql);
 
             if ($options_result->num_rows > 0) {

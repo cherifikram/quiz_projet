@@ -1,3 +1,4 @@
+
 <style>
     
 </style>
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['options'])) {
 
     // Sélectionner les options correctes pour chaque question
    // $sql = "SELECT o.id_option, o.correction FROM options1 o JOIN questions1 q ON o.id_question = q.id_question ";
-    $sql = "SELECT o.id_option, o.correction FROM options1 o JOIN questions1 q ON o.id_question = q.id_question ";
+    $sql = "SELECT o.id_option, o.correction FROM options o JOIN questions q ON o.id_question = q.id_question ";
     $result = $cnx->query($sql);
 
     if ($result->num_rows > 0) {
@@ -43,10 +44,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['options'])) {
     echo "<h2>Score : $score / 5</h2>";
     ?>
     </div>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <button type="submit" name="logout">Déconnexion</button>
+    </form>
     <?php
 
     $cnx->close();
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {
+    // Déconnexion de l'utilisateur
+    session_start();
+    session_destroy();
+
+    // Redirection vers la page d'authentification
+    header("Location: autontifier.php");
+    exit();
 } else {
     echo "Aucune réponse soumise.";
 }
 ?>
+
+
+
