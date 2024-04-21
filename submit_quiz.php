@@ -4,8 +4,7 @@
 // Vérifier si des options ont été soumises
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['options'])) {
 
-    // Vérifier si l'identifiant du quiz est passé en paramètre
-   
+    
 
 
     $selected_options = $_POST['options'];
@@ -40,16 +39,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['options'])) {
     echo "<h2>Score : $score / 5</h2>";
     ?>
     </div>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <button type="submit" name="logout">Déconnexion</button>
+    </form>
     <?php
 
     $cnx->close();
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {
+    // Déconnexion de l'utilisateur
+    session_start();
+    session_destroy();
+
+    // Redirection vers la page d'authentification
+    header("Location: autontifier.php");
+    exit();
 } else {
     echo "Aucune réponse soumise.";
 }
 ?>
-
-
-
-
 
 

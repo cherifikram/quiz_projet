@@ -11,7 +11,7 @@
         <fieldset>
             <legend><b>Login</b></legend>
             <label for="email">G_mail :</label>
-            <input type="text" id="email" placeholder="enter email"  name="email"><br><br>
+            <input type="email" id="email" placeholder="enter email"  name="email"><br><br>
 
             <label for="password">Password :</label>
             <input type="password" id="password" placeholder="       password " name="password"> <br><br>
@@ -42,6 +42,11 @@
                 echo "Le mot de passe ne peut pas contenir les caractères spéciaux #, ', _, ou -.";
             } else {
                 $req = ("SELECT typee FROM utilisateurs1 WHERE email='$email' AND mot_passe='$password'");
+
+            if(!empty($email) && !empty($password)){
+                // $req = ("SELECT email,mot_passe FROM utilisateurs WHERE email='$email' AND mot_passe='$password' And typee=");
+                $req = ("SELECT typee FROM utilisateurs1 WHERE email='$email' AND mot_passe='$password'");
+
                 $result = mysqli_query($cnx, $req);
                 $res=mysqli_fetch_assoc($result);
 
@@ -62,6 +67,7 @@
             }
         }
     }
+}
     ?>
 </body>
 </html>

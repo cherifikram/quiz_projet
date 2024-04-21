@@ -99,6 +99,34 @@ html {
     </style>
 </head>
 <body>
+<div class="div1">
+    <?php
+    require "conexion.php";
+  
+   
+
+    // Requête SQL pour récupérer le nom du stagiaire
+    $sql = "SELECT firstname FROM utilisateurs1 "; // Remplacez id_stagiaire par l'ID du stagiaire que vous souhaitez récupérer
+
+    $result = $cnx->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Afficher le nom du stagiaire dans l'en-tête de la page
+        while($row = $result->fetch_assoc()) {
+            echo "<h1>Bienvenue, " . $row["firstname"] . "</h1>";
+        }
+    } else {
+        echo "<h1>Bienvenue, Stagiaire</h1>"; // Message par défaut si aucun nom n'est trouvé
+    }
+
+    // Fermer la connexion à la base de données
+    $cnx->close();
+    ?>
+</div>
+
+    
+</div>
+
 
   <div class="div1">
         <h1>Quiz</h1>
@@ -110,7 +138,7 @@ html {
      <img src="HTML5_logo_and_wordmark.svg.png" alt="" style="width:50%" height=":50%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php?id_quiz=1"> <button class="button" > start</p></button></a>
+        <a href="quiz.php?"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
@@ -120,7 +148,7 @@ html {
      <img src="CSS3_logo_and_wordmark.svg.png" alt="" style="width:37%" height=":37%" class="img">
       <div class="container">
         <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php?id_quiz=2"> <button class="button" > start</p></button></a>
+        <a href="quiz.php?"> <button class="button" > start</p></button></a>
       </div>
     </div>
   </div>
