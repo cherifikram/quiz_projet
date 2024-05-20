@@ -30,10 +30,10 @@ html {
 }
 
 .div1{
-  padding: 50px;
+  padding: 20px;
   background-color:rgb(143, 68, 213);
   color: white;
-  height: 100px;
+  height: 50px;
 }
 .div1 .h1{
   font-size: xx-large;
@@ -128,8 +128,8 @@ html {
 </div>
 
 
-  <div class="div1">
-        <h1>Quiz</h1>
+  <div class="div1" id="div1">
+        <h1> Start Quiz</h1>
       
 </div>
 
