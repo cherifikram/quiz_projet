@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="logiiin.css">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
     <form action="#" method="POST">
         <fieldset>
             <legend><b>Login</b></legend>
             <label for="email">G_mail :</label>
-            <input type="email" id="email" placeholder="enter email"  name="email"><br><br>
+            <input type="email" id="email" placeholder="enter email" name="email" required><br><br>
 
             <label for="password">Password :</label>
-            <input type="password" id="password" placeholder="       password " name="password"> <br><br>
-            <button name="connecter"><b>connecter</b></button><br>
-            <small>Not having Acount yet? <a href="register.html"><b>register</b></a></small>
+            <input type="password" id="password" placeholder="password" name="password" required><br><br>
+            <button name="connecter"><b>Connecter</b></button><br>
+            <small>Not having an account yet? <a href="inscription.php"><b>Register</b></a></small>
         </fieldset>
     </form>
 
     <?php
+    session_start();
     require "conexion.php";
 
     function containsSpecialChars($string) {
@@ -33,29 +34,27 @@
         return false;
     }
 
-    if(isset($_POST['connecter'])){
+    if (isset($_POST['connecter'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if(!empty($email) && !empty($password)){
+        if (!empty($email) && !empty($password)) {
             if (containsSpecialChars($password)) {
                 echo "Le mot de passe ne peut pas contenir les caractères spéciaux #, ', _, ou -.";
             } else {
-                $req = ("SELECT typee FROM utilisateurs1 WHERE email='$email' AND mot_passe='$password'");
-
-            if(!empty($email) && !empty($password)){
-                // $req = ("SELECT email,mot_passe FROM utilisateurs WHERE email='$email' AND mot_passe='$password' And typee=");
-                $req = ("SELECT typee FROM utilisateurs1 WHERE email='$email' AND mot_passe='$password'");
-
+                $req = "SELECT typee FROM utilisateurs1 WHERE email='$email' AND mot_passe='$password'";
                 $result = mysqli_query($cnx, $req);
-                $res=mysqli_fetch_assoc($result);
+                $res = mysqli_fetch_assoc($result);
 
-                if($res){
-                    if($res['typee']=='stagaire'){
-                        header("location: stagaire.php");
+                if ($res) {
+                    // Store email in session
+                    $_SESSION['email'] = $email;
+
+                    if ($res['typee'] == 'stagaire') {
+                        header("Location: stagaire.php");
                         exit();
-                    } elseif($res['typee']=='administrateur'){
-                        header("location: administrateur.php");
+                    } elseif ($res['typee'] == 'administrateur') {
+                        header("Location: administrateur.php");
                         exit();
                     } else {
                         echo "Type d'utilisateur non reconnu";
@@ -65,9 +64,10 @@
                 }
                 mysqli_close($cnx);
             }
+        } else {
+            echo "Veuillez remplir tous les champs";
         }
     }
-}
     ?>
 </body>
 </html>

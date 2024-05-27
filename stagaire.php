@@ -3,205 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>stagaire</title>
-    <!-- <link rel="stylesheet" href="stagaire.css"> -->
+    <title>Stagiaire</title>
     <style>
-      body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background-image: none;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
+            
+        }
 
-}
-
-html {
-  box-sizing: border-box;
-}
-
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
-
-.div1{
-  padding: 20px;
-  background-color:rgb(143, 68, 213);
-  color: white;
-  height: 50px;
-}
-.div1 .h1{
-  font-size: xx-large;
-  text-align: center;
-  font-family: Verdana, Tahoma, sans-serif;
-}
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            /* background-color:rgba(143, 68, 213, 0.8); */
+            /* background: linear-gradient(to right, #0000FF, #00BFFF); */
+            /* background: linear-gradient(to right, #0000FF, #00BFFF); */
+            
+            background: linear-gradient(to right, #0000FF, #0000CC, #000099);
 
 
+            color: white;
+        }
 
-.container {
-  padding: 0 16px;
- 
-  
-}
-.container p{
-  text-align: center;
-}
-.container a{
-  display: flex;
-  justify-content: center;
-}
+        .header h1 {
+            margin: 0;
+            font-size: xx-large;
+           
+        }
 
-.container .title {
-  color: grey;
-}
+        .header h3 {
+            margin: 0;
+            font-size: large;
+        }
 
-.button {    display: inline-block;
-    background-color: rgb(49, 51, 190);
-    color: white;
-    font-size: 18px;
-    padding: 8px 16px;
-    width: 80px;
-    height: 40px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    border: 1px solid black;
-    transition: all 0.3s ease;
-}
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
 
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.button:hover {
-  background-color:gray;
-  
-}
+        .column {
+            flex: 0 1 calc(33.333% - 16px);
+            margin: 8px;
+            box-sizing: border-box;
+        }
 
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-.img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px;
-  padding-top: 15px;
-}  
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
+        .card img {
+            width: 100%;
+            height: 200px; /* Fixed height */
+            object-fit: cover; /* Ensure the image covers the area without stretching */
+        }
 
+        .container {
+            padding: 16px;
+            text-align: center;
+        }
 
+        .title {
+            color: grey;
+        }
 
+        .button {
+            display: inline-block;
+            background-color: rgb(49, 51, 190);
+            color: white;
+            font-size: 18px;
+            padding: 8px 16px;
+            width: 80px;
+            height: 40px;
+            margin: 20px 0;
+            border-radius: 6px;
+            border: 1px solid black;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: gray;
+        }
+
+        @media screen and (max-width: 650px) {
+            .column {
+                flex: 0 1 100%;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="div1">
-    <?php
-    require "conexion.php";
-  
-   
+    <div class="header">
+        <?php
+        session_start();
+        require "conexion.php";
 
-    // Requête SQL pour récupérer le nom du stagiaire
-    $sql = "SELECT firstname FROM utilisateurs1 "; // Remplacez id_stagiaire par l'ID du stagiaire que vous souhaitez récupérer
-
-    $result = $cnx->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Afficher le nom du stagiaire dans l'en-tête de la page
-        while($row = $result->fetch_assoc()) {
-            echo "<h1>Bienvenue, " . $row["firstname"] . "</h1>";
+        if (isset($_SESSION['email'])) {
+            $email = $_SESSION['email'];
+            echo "<h3>Bienvenu, $email</h3>";
+        } else {
+            echo "<p>No email session found. Please log in again.</p>";
         }
-    } else {
-        echo "<h1>Bienvenue, Stagiaire</h1>"; // Message par défaut si aucun nom n'est trouvé
-    }
-
-    // Fermer la connexion à la base de données
-    $cnx->close();
-    ?>
-</div>
-
-    
-</div>
-
-
-  <div class="div1" id="div1">
-        <h1> Start Quiz</h1>
-      
-</div>
-
-<div class="column">
-    <div class="card">
-     <img src="HTML5_logo_and_wordmark.svg.png" alt="" style="width:50%" height=":50%" class="img">
-      <div class="container">
-        <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php?"> <button class="button" > start</p></button></a>
-      </div>
+        ?>
+        <!-- //<h1>Start Quiz</h1> -->
     </div>
-  </div>
- 
-  <div class="column">
-    <div class="card">
-     <img src="CSS3_logo_and_wordmark.svg.png" alt="" style="width:37%" height=":37%" class="img">
-      <div class="container">
-        <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php?"> <button class="button" > start</p></button></a>
-      </div>
-    </div>
-  </div>
- 
-  <div class="column">
-    <div class="card">
-     <img src="image.webp" alt="" style="width:46%" height=":46%" class="img">
-      <div class="container">
-        <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php"> <button class="button" > start</p></button></a>
-      </div>
-      <br>
-    </div>
-  </div>
- 
-  <div class="column">
-    <div class="card">
-     <img src="phpp-logo.png" alt="" style="width:50%" height=":50%" class="img">
-      <div class="container">
-        <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php"> <button class="button" > start</p></button></a>
-      </div>
-    </div>
-  </div>
 
- 
-  <div class="column">
-    <div class="card">
-     <img src="python.png" alt="" style="width:45%" height=":45%" class="img">
-      <div class="container">
-        <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php"> <button class="button" > start</p></button></a>
-      </div>
+    <div class="content">
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="html2.jpg" alt="HTML5">
+                    <div class="container">
+                        <p class="title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum.</p>
+                        <a href="quiz.php"><button class="button">Start</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="css2.png" alt="CSS3">
+                    <div class="container">
+                        <p class="title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum.</p>
+                        <a href="quiz.php"><button class="button">Start</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="js2.avif" alt="JavaScript">
+                    <div class="container">
+                        <p class="title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum.</p>
+                        <a href="quiz.php"><button class="button">Start</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="php2.jpg" alt="PHP">
+                    <div class="container">
+                        <p class="title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum.</p>
+                        <a href="quiz.php"><button class="button">Start</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="python2.webp" alt="Python">
+                    <div class="container">
+                        <p class="title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum.</p>
+                        <a href="quiz.php"><button class="button">Start</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="react2.png" alt="React">
+                    <div class="container">
+                        <p class="title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum.</p>
+                        <a href="quiz.php"><button class="button">Start</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
- 
-  <div class="column">
-    <div class="card">
-     <img src="react.png" alt="" style="width:50%" height=":50%" class="img">
-      <div class="container">
-        <p class="title"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam praesentium eum . </p>
-        <a href="quiz.php"> <button class="button" > start</p></button></a>
-      </div>
-    </div>
-  </div>
-    
 </body>
 </html>
-
-
-
-
-
-
-
-
